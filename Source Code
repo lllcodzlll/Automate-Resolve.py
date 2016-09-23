@@ -1,0 +1,15 @@
+import socket, time
+
+with open("names.txt") as f:
+	file = open("resultado.txt", "w")
+	time.sleep(5)
+	for host in f:
+		try:
+			resultado = (socket.gethostbyname(socket.getfqdn(host)) + " --- " + host)
+			print (resultado)
+			file.write(resultado)
+		except socket.gaierror:
+			resultado = ("Error on " + host)
+			print (resultado)
+			file.write(resultado)
+	
